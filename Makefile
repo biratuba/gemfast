@@ -1,10 +1,10 @@
 SRCS=$(wildcard *.cpp)
-BIN=$(SRCS:.cpp=)
+BIN=$(SRCS:%.cpp=bin/%)
 
 all: $(BIN)
 
 binDir:
 	mkdir -p bin
 
-%: %.cpp | binDir
-	g++ -O2 $< -o bin/$@
+bin/%: %.cpp | binDir
+	g++ -O2 $< -o $@
