@@ -63,7 +63,7 @@ struct gem{
     
 };
 
-gem combine0(gem &a, gem &b){
+gem combine0(const gem &a, const gem &b){
     gem c;
     c.value = a.value + b.value;
     double component1 = a.component, component2 = b.component;
@@ -89,7 +89,7 @@ gem combine0(gem &a, gem &b){
     return c;
 }
 
-gem combine1(gem &a, gem &b){
+gem combine1(const gem &a, const gem &b){
     gem c;
     c.value = a.value + b.value;
     double component1 = a.component, component2 = b.component;

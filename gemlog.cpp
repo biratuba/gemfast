@@ -47,29 +47,33 @@ double add(double a,double b){
   return a + log2(1+exp2(b-a));
 }
 
-void stats(gem &c,gem a, gem b){
+void stats(gem &c, const gem& a, const gem& b){
   c.value = add(a.value,b.value);
   c.over_grade = max({a.over_grade,b.over_grade,c.value-c.grade});
   c.growth = c.component/c.value;
   c.recipe = a.value-b.value;
 }
 
-gem combine0(gem a, gem b){
+gem combine0(const gem& a, const gem& b){
   assert(a.grade == b.grade);
-  if(a.component < b.component)swap(a,b);
+  double ca = a.component;
+  double cb = b.component;
+  if(ca < cb) swap(ca,cb);
   gem c;
   c.grade = a.grade+1;
-  c.component = add(a.component + log2(a0) ,b.component+ log2(b0));
+  c.component = add(ca + log2(a0), cb + log2(b0));
   stats(c,a,b);
   return c;
 }
 
-gem combine1(gem a, gem b){
+gem combine1(const gem& a, const gem& b){
   assert(abs(a.grade - b.grade) == 1);
-  if(a.component < b.component)swap(a,b);
+  double ca = a.component;
+  double cb = b.component;
+  if(ca < cb) swap(ca,cb);
   gem c;
   c.grade = max(a.grade,b.grade);
-  c.component = add(a.component + log2(a1) ,b.component+ log2(b1));
+  c.component = add(ca + log2(a1), cb + log2(b1));
   stats(c,a,b);
   return c;
 }

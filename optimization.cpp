@@ -2,8 +2,6 @@
 
 using namespace std;
 
-using namespace std;
-
 const double a0 = 0.88, a1 = 0.89, b0 = 0.5, b1 = 0.44;
 
 int MANT = 54;
