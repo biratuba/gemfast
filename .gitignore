@@ -1,2 +1,9 @@
+# IDE
 .vscode
+
+# Compilation
 bin
+
+# Output
+data.csv
+out
